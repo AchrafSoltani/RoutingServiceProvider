@@ -52,12 +52,12 @@ class Router
             $method = $_route[1];
             
             if (!class_exists($class)) {
-                $app->abort(404);
+                throw new ResourceNotFoundException('Class ' . $class . ' is not defined.');
             }
             
             $reflection = new \ReflectionClass($class);
             if (!$reflection->hasMethod($method)) {
-                $app->abort(404);
+                throw new ResourceNotFoundException('Class ' . $class . ' has no ' . $method . 'method defined.');
             }
             
             $app = &$this->app;
