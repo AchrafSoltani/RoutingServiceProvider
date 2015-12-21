@@ -20,6 +20,8 @@ Setup
 ------------
 ``` {.php}
 $loader = require_once __DIR__.'/vendor/autoload.php';
+// THIS LINE IS MANDATORY, SO THE AUTOLOAD BECOMES AWARE OF YOUR CUSTOM CONTROLLERS
+$loader->addPsr4('',__DIR__.'/src/',true);
 
 use Silex\Application;
 use AchrafSoltani\Provider\RoutingServiceProvider;
