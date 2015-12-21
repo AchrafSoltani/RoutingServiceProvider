@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -48,12 +48,14 @@
 <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
-<div class="highlight highlight-sh"><pre>$ composer require achrafsoltani/routing-service-provider</pre></div>
+<div class="highlight highlight-source-shell"><pre>$ composer require achrafsoltani/routing-service-provider</pre></div>
 
 <h2>
 <a id="setup" class="anchor" href="#setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup</h2>
 
-<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$loader</span> <span class="pl-k">=</span> <span class="pl-k">require_once</span> <span class="pl-c1">__DIR__</span><span class="pl-k">.</span><span class="pl-s"><span class="pl-pds">'</span>/vendor/autoload.php<span class="pl-pds">'</span></span>;</span>
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-smi">$loader</span> <span class="pl-k">=</span> <span class="pl-k">require_once</span> <span class="pl-c1">__DIR__</span><span class="pl-k">.</span><span class="pl-s"><span class="pl-pds">'</span>/vendor/autoload.php<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1"><span class="pl-c">// THIS LINE IS MANDATORY, SO THE AUTOLOAD BECOMES AWARE OF YOUR CUSTOM CONTROLLERS</span></span>
+<span class="pl-s1"><span class="pl-smi">$loader</span><span class="pl-k">-&gt;</span>addPsr4(<span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,<span class="pl-c1">__DIR__</span><span class="pl-k">.</span><span class="pl-sr"><span class="pl-pds">'/</span>src<span class="pl-pds">/'</span></span>,<span class="pl-c1">true</span>);</span>
 <span class="pl-s1"></span>
 <span class="pl-s1"><span class="pl-k">use</span> <span class="pl-c1">Silex\Application</span>;</span>
 <span class="pl-s1"><span class="pl-k">use</span> <span class="pl-c1">AchrafSoltani\Provider\RoutingServiceProvider</span>;</span>
@@ -84,7 +86,7 @@
 <h2>
 <a id="example-controller" class="anchor" href="#example-controller" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example Controller</h2>
 
-<div class="highlight highlight-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<div class="highlight highlight-text-html-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
 <span class="pl-s1"></span>
 <span class="pl-s1"><span class="pl-k">namespace</span> <span class="pl-en">Foo\Controller</span>;</span>
 <span class="pl-s1"></span>
