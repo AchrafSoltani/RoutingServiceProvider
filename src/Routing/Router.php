@@ -44,7 +44,9 @@ class Router
         $this->matcher = new UrlMatcher($this->routes, $this->context);
         
         try{
-            $parameters = $this->matcher->match($this->request->getPathInfo()); 
+            $this->request->attributes->add($this->matcher->match($this->request->getPathInfo()));
+            $parameters = $this->matcher->match($this->request->getPathInfo());
+            $this->app['request'] = $this->request;
             
             $_route = explode('::', $parameters['controller']);
             
@@ -61,11 +63,12 @@ class Router
             }
             
             $app = &$this->app;
+            $request = &$this->request;
 
-            $this->app->match($this->request->getPathInfo(), function () use (&$app, $class, $method) 
+            $this->app->match($this->request->getPathInfo(), function () use (&$app, $class, $method, &$request) 
             {
                 $controller = new $class($app);
-                return $controller->$method();
+                return $controller->$method($request);
             })
             ->bind($parameters['_route']);
         }
